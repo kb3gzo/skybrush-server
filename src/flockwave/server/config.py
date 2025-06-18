@@ -51,7 +51,7 @@ EXTENSIONS = {
     "http": {},
     "http_server": {},
     "insomnia": {"keep_display_on": False},
-    "kp_index": {"source": "potsdam"},
+    "kp_index": {"source": "noaa"},
     "license": {},
     "location": {},
     "location_from_uavs": {"priority": 0},
@@ -76,7 +76,15 @@ EXTENSIONS = {
     "rc": {"enabled": "avoid"},
     "rc_udp": {"enabled": False},
     "rtk": {
-        "presets": {},
+      "presets": {
+        "my-rtk-base": {
+          "auto_select": false,
+          "auto_survey": false,
+          "format": "auto",
+          "source": "ntrip://skybrush:andrue03@10.0.30.151:2101/pa_bra_franklin",
+          "title": "NTRIP - BRA_FRA"
+        }
+      },
         "add_serial_ports": True,
         "message_set": "basic",
         # "gnss_types": "all",  # or a list like ["gps", "glonass"]
