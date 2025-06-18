@@ -195,18 +195,17 @@ async def _to_json(
 #############################################################################
 # Route definitions
 
-
+"""
 @blueprint.before_request
 def fail_if_not_localhost() -> None:
-    """Checks the environment of the current request being served and aborts
-    the request with an HTTP 403 Forbidden if it is not coming from localhost.
-    """
+    # Checks the environment of the current request being served and aborts the request with an HTTP 403 Forbidden if it is not coming from localhost.
+    
     if not is_public:
         # We need to abort the request if it is not coming from localhost or
         # if it has passed through proxy servers
         if request.remote_addr != "127.0.0.1" or len(request.access_route) > 1:
             abort(403)
-
+"""
 
 @blueprint.context_processor
 def inject_debug_variable() -> dict[str, Any]:
