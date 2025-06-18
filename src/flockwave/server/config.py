@@ -76,22 +76,14 @@ EXTENSIONS = {
     "rc": {"enabled": "avoid"},
     "rc_udp": {"enabled": False},
     "rtk": {
-      "presets": {
-        "my-rtk-base": {
-          "auto_select": false,
-          "auto_survey": false,
-          "format": "auto",
-          "source": "ntrip://skybrush:andrue03@10.0.30.151:2101/pa_bra_franklin",
-          "title": "NTRIP - BRA_FRA"
-        }
-      },
+        "presets": {},
         "add_serial_ports": True,
         "message_set": "basic",
         # "gnss_types": "all",  # or a list like ["gps", "glonass"]
         "use_high_precision": True,  # set to false if the rover cannot handle high-precision MSM RTK messages
     },
     "show": {
-        "default_start_method": "rc"  # set to "auto" if you typically start shows automatically and not via a remote controller
+        "default_start_method": "auto"  # set to "auto" if you typically start shows automatically and not via a remote controller
     },
     "show_pro": {},  # used to trigger auto-loading when the license is installed
     "sidekick": {},  # used to trigger auto-loading when the license is installed
@@ -105,18 +97,18 @@ EXTENSIONS = {
     "virtual_uavs": {
         "arm_after_boot": True,
         "add_noise": False,
-        "count": 5,
+        "count": 20,
         "delay": 0.2,
         "enabled": False,
         "id_format": "{0}",
-        "origin": [18.915125, 47.486305, 215],  # Fahegy
+        "origin": [41.7041728, -76.545189],  # Franklindale, PA
         # "origin": [19.062159, 47.473360],  # ELTE kert
-        "orientation": 59,
+        "orientation": 0,
         "takeoff_area": {"type": "grid", "spacing": 5},
     },
     "weather": {},
     "webui": {
         "enabled": True,
-        # "route": "/webui",
+        "route": "/webui",
     },
 }
