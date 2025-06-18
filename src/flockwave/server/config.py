@@ -40,7 +40,7 @@ EXTENSIONS = {
         "enabled": False,
     },
     "ext_manager": {},
-    "firmware_update": {},  # used to trigger auto-loading when the license is installed
+    "firmware_update": {"enabled": False},  # used to trigger auto-loading when the license is installed
     "frontend": {},
     "gps": {
         "connection": "gpsd",
@@ -86,7 +86,7 @@ EXTENSIONS = {
         "default_start_method": "auto"  # set to "auto" if you typically start shows automatically and not via a remote controller
     },
     "show_pro": {},  # used to trigger auto-loading when the license is installed
-    "sidekick": {},  # used to trigger auto-loading when the license is installed
+    "sidekick": {"enabled": True},  # used to trigger auto-loading when the license is installed
     "smpte_timecode": {},  # used to trigger auto-loading when the license is installed
     "socketio": {},
     "ssdp": {},
