@@ -65,9 +65,15 @@ EXTENSIONS = {
         "networks": {
             "mav": {
                 "connections": [
-                    "default"
-                ],  # default setup; listens for heartbeats on UDP port 14550, sends broadcasts to UDP port 14555
-                "routing": {},
+                    "udp-listen://:14550?broadcast_port=14555"
+                ],
+                "id_format": "{0:02}",
+                "rssi_mode": "radio_status",
+                "statustext_targets": {
+                    "client": "debug",
+                    "server": "notice"
+                },
+            "system_id": 254
             }
         },
     },
@@ -77,7 +83,7 @@ EXTENSIONS = {
     "rc_udp": {"enabled": False},
     "rtk": {
         "presets": { "my-rtk-base": { "auto_select": True, "auto_survey": False, "format": "auto", "source": "ntrip://skybrush:andrue03@10.0.30.151:2101/pa_bra_franklin", "title": "NTRIP - BRA_FRA"} },
-        "add_serial_ports": True,
+        "add_serial_ports": [115200, 230400],
         "message_set": "basic",
         # "gnss_types": "all",  # or a list like ["gps", "glonass"]
         "use_high_precision": True,  # set to false if the rover cannot handle high-precision MSM RTK messages
@@ -85,9 +91,9 @@ EXTENSIONS = {
     "show": {
         "default_start_method": "auto"  # set to "auto" if you typically start shows automatically and not via a remote controller
     },
-    "show_pro": {},  # used to trigger auto-loading when the license is installed
-    "sidekick": {"enabled": True},  # used to trigger auto-loading when the license is installed
-    "smpte_timecode": {},  # used to trigger auto-loading when the license is installed
+    "show_pro": {"enabled": True},  # used to trigger auto-loading when the license is installed
+    "sidekick": {},  # used to trigger auto-loading when the license is installed
+    "smpte_timecode": {"enabled": True},  # used to trigger auto-loading when the license is installed
     "socketio": {},
     "ssdp": {},
     "studio": {},  # used to trigger auto-loading when the license is installed
@@ -101,7 +107,7 @@ EXTENSIONS = {
         "delay": 0.2,
         "enabled": False,
         "id_format": "{0}",
-        "origin": [41.7041728, -76.545189],  # Franklindale, PA
+        "origin": [-76.545189, 41.7041728],  # Franklindale, PA
         # "origin": [19.062159, 47.473360],  # ELTE kert
         "orientation": 0,
         "takeoff_area": {"type": "grid", "spacing": 5},
