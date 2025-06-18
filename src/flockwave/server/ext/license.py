@@ -55,7 +55,8 @@ class License(ABC):
         if expiry_date is None:
             return NEVER_EXPIRES
         else:
-        """    return (expiry_date - date.today()).days"""
+            """return (expiry_date - date.today()).days
+            """
         return NEVER_EXPIRES
         
 
