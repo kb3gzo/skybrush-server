@@ -217,7 +217,7 @@ class DummyLicense(License):
         return None
 
     def get_expiry_date(self) -> Optional[date]:
-        return date.today() + timedelta(days=42)
+        return None
 
     def get_id(self) -> str:
         return "test-1"
@@ -226,7 +226,7 @@ class DummyLicense(License):
         return "Test license"
 
     def get_maximum_drone_count(self) -> float:
-        return 5
+        return 100
 
 
 class DictBasedLicense(License):
