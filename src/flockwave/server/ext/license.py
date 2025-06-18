@@ -18,7 +18,7 @@ NEVER_EXPIRES = 20 * 365
 never expires.
 """
 
-license: Optional[License] = Any
+license: Optional[License] = None
 """Global variable holding the current license."""
 
 _EMPTY_SET = frozenset()
@@ -55,10 +55,7 @@ class License(ABC):
         if expiry_date is None:
             return NEVER_EXPIRES
         else:
-            """return (expiry_date - date.today()).days
-            """
-        return NEVER_EXPIRES
-        
+            return (expiry_date - date.today()).days
 
     @abstractmethod
     def get_features(self) -> frozenset[str]:
@@ -229,7 +226,7 @@ class DummyLicense(License):
         return "Test license"
 
     def get_maximum_drone_count(self) -> float:
-        return 100
+        return 5
 
 
 class DictBasedLicense(License):
@@ -367,8 +364,7 @@ def has_feature(*args: str) -> bool:
 
 
 def enforce_license_limits(license: Optional[License], app) -> None:
-    """num_drones = license.get_maximum_drone_count() if license else inf"""
-    num_drones = 100
+    num_drones = license.get_maximum_drone_count() if license else inf
     app.object_registry.size_limit = num_drones
 
 
@@ -387,8 +383,7 @@ def show_license_information(
     if license is None:
         return
 
-    """licensee = license.get_licensee()"""
-    licensee = "Aaron Andrus"
+    licensee = license.get_licensee()
     if licensee:
         logger.info(f"Licensed to {licensee}")
 
