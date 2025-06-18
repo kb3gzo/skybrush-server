@@ -18,7 +18,7 @@ NEVER_EXPIRES = 20 * 365
 never expires.
 """
 
-license: Optional[License] = DummyLicense
+license: Optional[License] = Any
 """Global variable holding the current license."""
 
 _EMPTY_SET = frozenset()
@@ -56,7 +56,7 @@ class License(ABC):
             return NEVER_EXPIRES
         else:
         """    return (expiry_date - date.today()).days"""
-            return NEVER_EXPIRES
+        return NEVER_EXPIRES
         
 
     @abstractmethod
@@ -333,7 +333,7 @@ class DictBasedLicense(License):
         self._features = frozenset(str(f) for f in features) if features else _EMPTY_SET
 
 
-class CLSLicense(DictBasedLicense):
+class CLSLicense(DummyLicense):
     """License class for licenses based on CollMot's own license manager."""
 
     @classmethod
