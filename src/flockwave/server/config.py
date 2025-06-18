@@ -76,8 +76,7 @@ EXTENSIONS = {
     "rc": {"enabled": "avoid"},
     "rc_udp": {"enabled": False},
     "rtk": {
-        "presets": {
-        "my-rtk-base": { "auto_select": False, "auto_survey": False, "format": "auto", "source": "ntrip://skybrush:andrue03@10.0.30.151:2101/pa_bra_franklin", "title": "NTRIP - BRA_FRA"},
+        "presets": { "my-rtk-base": { "auto_select": False, "auto_survey": False, "format": "auto", "source": "ntrip://skybrush:andrue03@10.0.30.151:2101/pa_bra_franklin", "title": "NTRIP - BRA_FRA"} },
         "add_serial_ports": True,
         "message_set": "basic",
         # "gnss_types": "all",  # or a list like ["gps", "glonass"]
